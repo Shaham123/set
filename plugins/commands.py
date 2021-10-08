@@ -101,11 +101,11 @@ async def start(bot, cmd):
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
-                        InlineKeyboardButton("🤴BOT OWNER 🤴", url="https://t.me/ivar_bonel"),
-                        InlineKeyboardButton("🕊️ BOT GROUP🕊️", url="https://t.me/malllumoviesgroups")
+                        InlineKeyboardButton("🤴 ʙᴏᴛ ᴏᴡɴᴇʀ 🤴", url="https://t.me/ivar_bonel"),
+                        InlineKeyboardButton("🕊️ ʙᴏᴛ ɢʀᴏᴜᴘ 🕊️", url="https://t.me/malllumoviesgroups")
                     ],
                     [
-                        InlineKeyboardButton("🍿JOIN OUR MAIN CHANNEL🍿", url="https://t.me/mainchannel12346")
+                        InlineKeyboardButton("🍿ᴊᴏɪɴ ᴏᴜʀ ᴍᴀɪɴ ᴄʜᴀɴɴᴇʟ🍿", url="https://t.me/mainchannel12346")
                     ]
                 ]
             )
