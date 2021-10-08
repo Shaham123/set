@@ -98,8 +98,6 @@ async def start(bot, cmd):
         await cmd.reply_photo(
             photo="https://telegra.ph/file/6f793ddfca7873f234116.png",
             caption=START_MSG,
-            parse_mode="Markdown",
-            disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
