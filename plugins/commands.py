@@ -102,11 +102,11 @@ async def start(bot, cmd):
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
-                        InlineKeyboardButton("Search Here", switch_inline_query_current_chat=''),
-                        InlineKeyboardButton("Bot Updates", url="https://t.me/Mo_Tech_YT")
+                        InlineKeyboardButton("🤴BOT OWNER 🤴", url="https://t.me/ivar_bonel"),
+                        InlineKeyboardButton("🕊️ BOT GROUP🕊️", url="https://t.me/malllumoviesgroups")
                     ],
                     [
-                        InlineKeyboardButton("About", callback_data="about")
+                        InlineKeyboardButton("🍿JOIN OUR MAIN CHANNEL🍿", url="https://t.me/mainchannel12346")
                     ]
                 ]
             )
