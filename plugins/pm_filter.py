@@ -133,9 +133,9 @@ async def group(client, message):
         if API_KEY:
             poster=await get_poster(search)
         if poster:
-                await message.reply_photo(photo=poster, caption=f"<b>📂 ᴍᴏᴠɪᴇ ɴᴀᴍᴇ : <code>{search} ‌‌‌‌‎ ­  ­  ­  ­  ­  </code>{RESULT_MSG} </b>", reply_markup=InlineKeyboardMarkup(buttons))
-            else:
-                await message.reply_text(f"<b>📂 ᴍᴏᴠɪᴇ ɴᴀᴍᴇ : <code>{search} ‌‌‌‌‎ ­  ­  ­  ­  ­  </code>{RESULT_MSG} </b>", reply_markup=InlineKeyboardMarkup(buttons))
+            await message.reply_photo(photo=poster, caption=f"<b>🍿 ᴍᴏᴠɪᴇ ɴᴀᴍᴇ : <code>{search} ‌‌‌‌‎ ­  ­  ­  ­  ­  </code>{RESULT_MSG} </b>", reply_markup=InlineKeyboardMarkup(buttons))
+        else:
+            await message.reply_text(f"<b>🍿 ᴍᴏᴠɪᴇ ɴᴀᴍᴇ : <code>{search} ‌‌‌‌‎ ­  ­  ­  ­  ­  </code>{RESULT_MSG} </b>", reply_markup=InlineKeyboardMarkup(buttons))
 
     
 def get_size(size):
@@ -242,7 +242,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         elif query.data == "about":
             buttons = [
                 [
-                    InlineKeyboardButton('Update Channel', url='t.me/Mo_Tech_YT'),
+                    InlineKeyboardButton('Update Channel', url='t.me/HTechMedia'),
                     InlineKeyboardButton('Source Code', url=f'{TUTORIAL}')
                 ]
                 ]
