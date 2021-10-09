@@ -240,12 +240,13 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 )
                 return
         elif query.data == "about":
-    buttons = [
-        [
-            InlineKeyboardButton("Dev Channel", url="https://t.me/HTechMedia"),
-            InlineKeyboardButton("Support", url="https://t.me/HTechMediaSupport")
-        ]
-        ]
+            invite_link = await bot.create_chat_invite_link(int(AUTH_CHANNEL))            
+            buttons = [
+                [
+                    InlineKeyboardButton("🌿 ᴊᴏɪɴ ᴏᴜʀ ᴍᴀɪɴ ᴄʜᴀɴɴᴇʟ 🌿", url=invite_link.invite_link),
+                    InlineKeyboardButton("🍁 ʙᴏᴛ ɢʀᴏᴜᴘ 🍁", url="https://t.me/malllumoviesgroups")
+                ]
+                ]
     await message.reply(text=f"<b>Developer : <a href='https://t.me/HTechMediaSupport'>NxtStark</a>\nLanguage : <code>Python3</code>\nLibrary : <a href='https://docs.pyrogram.org/'>Pyrogram asyncio</a>\nUpdate Channel : <a href='https://t.me/HTechMedia'>HTechMedia</a> </b>", reply_markup=InlineKeyboardMarkup(buttons), disable_web_page_preview=True)
 
 
