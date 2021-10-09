@@ -250,7 +250,6 @@ async def cb_handler(client: Client, query: CallbackQuery):
     await message.reply(text=f"<b>Developer : <a href='https://t.me/HTechMediaSupport'>NxtStark</a>\nLanguage : <code>Python3</code>\nLibrary : <a href='https://docs.pyrogram.org/'>Pyrogram asyncio</a>\nUpdate Channel : <a href='https://t.me/HTechMedia'>HTechMedia</a> </b>", reply_markup=InlineKeyboardMarkup(buttons), disable_web_page_preview=True)
 
 
-
         elif query.data.startswith("subinps"):
             ident, file_id = query.data.split("#")
             filedetails = await get_file_details(file_id)
@@ -258,7 +257,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 title = files.file_name
                 size=files.file_size
                 f_caption=files.caption
-                if CUSTOM_FILE_CAPTION:
+                if CUSTOM_FILE_CAPTION:               
                     try:
                         f_caption=CUSTOM_FILE_CAPTION.format(file_name=title, file_size=size, file_caption=f_caption)
                     except Exception as e:
@@ -281,7 +280,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     )
         elif query.data.startswith("checksub"):
             if AUTH_CHANNEL and not await is_subscribed(client, query):
-                await query.answer("I Like Your Smartness, But Don't Be Oversmart 😒",show_alert=True)
+                await query.answer("Please Join 🥴",show_alert=True)
                 return
             ident, file_id = query.data.split("#")
             filedetails = await get_file_details(file_id)
@@ -290,12 +289,13 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 size=files.file_size
                 f_caption=files.caption
                 if CUSTOM_FILE_CAPTION:
+                    invite_linkd = await bot.create_chat_invite_link(int(AUTH_GROUPS))  
                     try:
                         f_caption=CUSTOM_FILE_CAPTION.format(file_name=title, file_size=size, file_caption=f_caption)
                     except Exception as e:
                         print(e)
                         f_caption=f_caption
-                if f_caption is None:
+                if f_caption is None:  
                     f_caption = f"{title}"
                 buttons = [
                     [
