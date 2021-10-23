@@ -95,9 +95,9 @@ async def group(client, message):
                     [InlineKeyboardButton(text=f"{filename}", url=f"https://telegram.dog/{nyva}?start=subinps_-_-_-_{file_id}")]
                 )
         else:
-            return
-        if not btn:
-            return
+            await message.reply_photo(photo="https://telegra.ph/file/6afed4efe2f9f21005f24.jpg", caption="<b>Couldn't Find This Movie.Try Again..! ഈ സിനിമയുടെ ഒറിജിനൽ പേര് ഗൂഗിളിൽ പോയി കണ്ടെത്തി അതുപോലെ ഇവിടെ കൊടുക്കുക 🥺</b>") 
+
+            await asyncio.sleep(5) await Send_message.delete()
 
         if len(btn) > 10: 
             btns = list(split_list(btn, 10)) 
