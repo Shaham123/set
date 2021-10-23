@@ -1,5 +1,6 @@
 import os
 import logging
+import random
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from info import START_MSG, CHANNELS, ADMINS, AUTH_CHANNEL, CUSTOM_FILE_CAPTION
@@ -7,6 +8,20 @@ from utils import Media, get_file_details
 from info import TUTORIAL 
 from pyrogram.errors import UserNotParticipant
 logger = logging.getLogger(__name__)
+
+PHOTO = [
+    "https://telegra.ph/file/0ba800b2cd7ea953b2ee9.jpg",
+    "https://telegra.ph/file/edc447f0998d28feadc44.jpg",
+    "https://telegra.ph/file/2186a9a73c591c50974f1.jpg",
+    "https://telegra.ph/file/a187de93b71cb14aa2933.jpg",
+    "https://telegra.ph/file/348b6a39fbb33d87db2c2.jpg",
+    "https://telegra.ph/file/60e39fd75cc6cfb1056b2.jpg",
+    "https://telegra.ph/file/634d5841e11771aeddfe7.jpg",
+    "https://telegra.ph/file/d9128aff51976000de2d0.jpg",
+    "https://telegra.ph/file/9b8bb76db12e1a7c55195.jpg",
+    "https://telegra.ph/file/efaabad3f05aa9d99c6f7.jpg",
+    "https://telegra.ph/file/3b400315886a27cb441bf.jpg",    
+]
 
 @Client.on_message(filters.command("start"))
 async def start(bot, cmd):
@@ -68,8 +83,11 @@ async def start(bot, cmd):
                 buttons = [
                     [
                         InlineKeyboardButton("🍂 ꜱᴇᴀʀᴄʜ ᴀɢᴀɪɴ 🍂", url="https://t.me/malllumoviesgroups")
-                    ]
-                    ]
+                        InlineKeyboardButton("🌟 sʜᴀʀᴇ 🌟", url=f"https://t.me/share/url?url=**%F0%9F%8D%81%20%E3%80%90%EF%BB%BF%E0%B4%AE%E0%B4%B2%E0%B5%8D%E0%B4%B2%E0%B5%81%E3%80%91%20%F0%9D%95%8E%F0%9D%95%96%F0%9D%95%93%C2%B2%C2%B7%E2%81%B0%20%F0%9F%8D%81%0A%0A%E0%B4%8F%E0%B4%A4%E0%B5%8D%20%E0%B4%85%E0%B5%BC%E0%B4%A7%E0%B4%B0%E0%B4%BE%E0%B4%A4%E0%B5%8D%E0%B4%B0%E0%B4%BF%20%E0%B4%9A%E0%B5%8B%E0%B4%A6%E0%B4%BF%E0%B4%9A%E0%B5%8D%E0%B4%9A%E0%B4%BE%E0%B4%B2%E0%B5%81%E0%B4%82%20%E0%B4%AA%E0%B4%9F%E0%B4%82%20%E0%B4%95%E0%B4%BF%E0%B4%9F%E0%B5%8D%E0%B4%9F%E0%B5%81%E0%B4%82,%20%E0%B4%B2%E0%B5%8B%E0%B4%95%E0%B4%A4%E0%B5%8D%E0%B4%A4%E0%B4%BF%E0%B4%B2%E0%B5%86%20%E0%B4%92%E0%B4%9F%E0%B5%8D%E0%B4%9F%E0%B5%81%E0%B4%AE%E0%B4%BF%E0%B4%95%E0%B5%8D%E0%B4%95%20%E0%B4%AD%E0%B4%BE%E0%B4%B7%E0%B4%95%E0%B4%B3%E0%B4%BF%E0%B4%B2%E0%B5%81%E0%B4%AE%E0%B5%81%E0%B4%B3%E0%B5%8D%E0%B4%B3%20%E0%B4%B8%E0%B4%BF%E0%B4%A8%E0%B4%BF%E0%B4%AE%E0%B4%95%E0%B4%B3%E0%B5%81%E0%B4%9F%E0%B5%86%20%E0%B4%95%E0%B4%B3%E0%B4%95%E0%B5%8D%E0%B4%B7%E0%B5%BB..%20%E2%9D%A4%EF%B8%8F%0A%0A%F0%9F%91%87%20GROUP%20LINK%20%F0%9F%91%87%0A%0A@malllumoviesgroups%0A%0A@malllumoviesgroups%0A%0A@malllumoviesgroups**")
+                   ],[
+                     InlineKeyboardButton("🍁 ᴅᴏᴡɴʟᴏᴀᴅ sᴜʙᴛɪᴛʟᴇs 🍁", url=f"https://t.me/subtitle_dl_bot")
+                  ]
+                ]
                 await bot.send_cached_media(
                     chat_id=cmd.from_user.id,
                     file_id=file_id,
@@ -93,7 +111,7 @@ async def start(bot, cmd):
         )
     else:
         await cmd.reply_photo(
-            photo="https://telegra.ph/file/6f793ddfca7873f234116.png",
+            photo=f"{random.choice(PHOTO)}",
             caption=START_MSG,
             reply_markup=InlineKeyboardMarkup(
                 [
