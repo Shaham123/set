@@ -315,4 +315,4 @@ async def cb_handler(client: Client, query: CallbackQuery):
         elif query.data == "pages":
             await query.answer()
     else:
-        await query.answer("കൌതുകും ലേശം കൂടുതൽ ആണല്ലേ👀",show_alert=True)
+        await query.answer(text=f"𝙼𝚢𝚜𝚝𝚎𝚛𝚒𝚘²·⁰\n\nഎടാ {} കുട്ട ഇത് നിനക്കുള്ള തല്ല😛 നിന്നെ ഞാൻ കണ്ടു🙈\n\n🌟 REQUEST YOUR OWN 🌟\n\n© 【﻿മല്ലു】𝕎𝕖𝕓²·⁰",show_alert=True)
