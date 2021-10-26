@@ -8,6 +8,7 @@ from pyrogram.errors import UserNotParticipant
 from utils import get_filter_results, get_file_details, is_subscribed, get_poster
 BUTTONS = {}
 BOT = {}
+PHOTOPRK = "https://telegra.ph/file/6afed4efe2f9f21005f24.jpg"
 @Client.on_message(filters.text & filters.private & filters.incoming & filters.user(AUTH_USERS) if AUTH_USERS else filters.text & filters.private & filters.incoming)
 async def filter(client, message):
     if message.text.startswith("/"):
@@ -27,7 +28,7 @@ async def filter(client, message):
         except UserNotParticipant:
             await client.send_message(
                 chat_id=message.from_user.id,
-                text="**Please Join My Updates Channel to use this Bot!**",
+                text="**Please Join My Channel to use this Bot!**",
                 reply_markup=InlineKeyboardMarkup(
                     [
                         [
@@ -55,7 +56,7 @@ async def filter(client, message):
         if files:
             for file in files:
                 file_id = file.file_id
-                filename = f"🎪 {get_size(file.file_size)} {file.file_name}"
+                filename = f"🎪 {get_size(file.file_size)} 📥 {file.file_name}"
                 btn.append(
                     [InlineKeyboardButton(text=f"{filename}",callback_data=f"subinps#{file_id}")]
                     )
@@ -90,12 +91,12 @@ async def group(client, message):
         if files:
             for file in files:
                 file_id = file.file_id
-                filename = f"🎪 {get_size(file.file_size)} {file.file_name}"
+                filename = f"🎪 {get_size(file.file_size)} 📥 {file.file_name}"
                 btn.append(
                     [InlineKeyboardButton(text=f"{filename}", url=f"https://telegram.dog/{nyva}?start=subinps_-_-_-_{file_id}")]
                 )
         else:
-            await message.reply_photo(photo="https://telegra.ph/file/6afed4efe2f9f21005f24.jpg", caption="<b>Couldn't Find This Movie.Try Again..! ഈ സിനിമയുടെ ഒറിജിനൽ പേര് ഗൂഗിളിൽ പോയി കണ്ടെത്തി അതുപോലെ ഇവിടെ കൊടുക്കുക 🥺</b>") 
+            await message.reply_photo(photo=PHOTOPRK, caption="<b>Couldn't Find This Movie.Try Again..! ഈ സിനിമയുടെ ഒറിജിനൽ പേര് ഗൂഗിളിൽ പോയി കണ്ടെത്തി അതുപോലെ ഇവിടെ കൊടുക്കുക 🥺</b>") 
         return 
 
         if len(btn) > 10: 
@@ -114,9 +115,9 @@ async def group(client, message):
             if API_KEY:
                 poster=await get_poster(search)
             if poster:
-                await message.reply_photo(photo=poster, caption=f"<b>📂 ᴍᴏᴠɪᴇ ɴᴀᴍᴇ : <code>{search} ‌‌‌‌‎ ­  ­  ­  ­  ­  </code>\n{RESULT_MSG}</b>", reply_markup=InlineKeyboardMarkup(buttons))
+                await message.reply_photo(photo=poster, caption=f"<b>📂 ᴍᴏᴠɪᴇ ɴᴀᴍᴇ : {search} ‌‌‌‌‎ ­  ­  ­  ­  ­  \n{RESULT_MSG}</b>", reply_markup=InlineKeyboardMarkup(buttons))
             else:
-                await message.reply_text(f"<b>📂 ᴍᴏᴠɪᴇ ɴᴀᴍᴇ : <code>{search} ‌‌‌‌‎ ­  ­  ­  ­  ­  </code>\n{RESULT_MSG}</b>", reply_markup=InlineKeyboardMarkup(buttons))
+                await message.reply_photo(photo=PHOTOPRK, caption=f"<b>📂 ᴍᴏᴠɪᴇ ɴᴀᴍᴇ : {search} ‌‌‌‌‎ ­  ­  ­  ­  ­  \n{RESULT_MSG}</b>", reply_markup=InlineKeyboardMarkup(buttons))
             return
 
         data = BUTTONS[keyword]
@@ -132,15 +133,15 @@ async def group(client, message):
         if API_KEY:
             poster=await get_poster(search)
         if poster:
-            await message.reply_photo(photo=poster, caption=f"<b>🍿 ᴍᴏᴠɪᴇ ɴᴀᴍᴇ : <code>{search} ‌‌‌‌‎ ­  ­  ­  ­  ­  </code>\n{RESULT_MSG}</b>", reply_markup=InlineKeyboardMarkup(buttons))
+            await message.reply_photo(photo=poster, caption=f"<b>📂 ᴍᴏᴠɪᴇ ɴᴀᴍᴇ : {search} ‌‌‌‌‎ ­  ­  ­  ­  ­  \n{RESULT_MSG}</b>", reply_markup=InlineKeyboardMarkup(buttons))
         else:
-            await message.reply_text(f"<b>🍿 ᴍᴏᴠɪᴇ ɴᴀᴍᴇ : <code>{search} ‌‌‌‌‎ ­  ­  ­  ­  ­  </code>\n{RESULT_MSG}</b>", reply_markup=InlineKeyboardMarkup(buttons))
+            await message.reply_photo(photo=PHOTOPRK, caption=f"<b>📂 ᴍᴏᴠɪᴇ ɴᴀᴍᴇ : {search} ‌‌‌‌‎ ­  ­  ­  ­  ­  \n{RESULT_MSG}</b>", reply_markup=InlineKeyboardMarkup(buttons))
 
     
 def get_size(size):
     """Get size in readable format"""
 
-    units = ["Bytes", "KB", "MB", "GB", "TB", "PB", "EB"]
+    units = ["Bytes", "ᴋʙ", "ᴍʙ", "ɢʙ", "ᴛʙ", "ᴘʙ", "ᴇʙ"]
     size = float(size)
     i = 0
     while size >= 1024.0 and i < len(units):
@@ -314,4 +315,4 @@ async def cb_handler(client: Client, query: CallbackQuery):
         elif query.data == "pages":
             await query.answer()
     else:
-        await query.answer("𝙼𝚢𝚜𝚝𝚎𝚛𝚒𝚘²·⁰\n\nഎടാ {message.from_user.first_name} കുട്ട ഇത് നിനക്കുള്ളതല്ല😛 നിന്നെ ഞാൻ കണ്ടു🙈\n\n🌟 REQUEST YOUR OWN 🌟\n\n© 【﻿മല്ലു】𝕎𝕖𝕓²·⁰", show_alert=True)
+        await query.answer(text=f"𝙼𝚢𝚜𝚝𝚎𝚛𝚒𝚘²·⁰\n\nഎടാ {query.from_user.first_name} കുട്ട ഇത് നിനക്കുള്ളതല്ല😛 നിന്നെ ഞാൻ കണ്ടു🙈\n\n🌟 REQUEST YOUR OWN 🌟\n\n© 【﻿മല്ലു】𝕎𝕖𝕓²·⁰", show_alert=True)
